@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          <title>Play !</title>
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+        
+
+        <!-- Link to external styles sheet -->
+             <link href="../css/styles.css" type="text/css" rel="stylesheet">
+            
+
+        <!--Link to Favicon-->
+             <link href="../imgs/gamelogo.png"  type="imgs/png" rel="icon">
+          <style>
+
+               body {
+                    margin: 0;
+                    padding: 0;
+               }
+
+               h3 {
+                    text-transform: uppercase;
+                    font-size: 2.5rem;
+                    color: 	#6c541e;
+                    font-weight: 100;
+                    font-style: oblique;
+                    font-weight: bold;
+               }
+
+               h4 {
+                    color: #665d1e;
+                    text-transform: uppercase;
+                    font-size: 1.5rem;
+                    position: absolute;
+                    top: -60px;
+                    left: -230px;
+               }
+
+               canvas {
+                    background-image: url(../imgs/background1.jpg);
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    box-shadow: 5px 5px 5px 10px greenyellow;
+               }
+
+               .gamePage {
+                    margin-top: 1rem;
+               }
+
+               .rel {
+                    position: relative;
+               }
+
+               .modal-dialog {
+                    max-width: 300px;
+               }
+
+               .modal-body  {
+                    text-align: center;
+               }
+
+               .btn {
+                    display: block;
+                    width: 15%;
+                    font-size: 1rem;
+                    background-color: brown;
+                    color: #fff;
+                    border: 4px solid #592720;
+               }
+
+               .btn:hover {
+                    color: brown;
+                    background-color: #fff;
+               }
+
+               .modal-btn {
+                    width: 20%;
+               }
+
+               .buttons {
+                    margin-bottom: 10px;
+                    position: absolute;
+                    top: -70px;
+                    left: 140px;
+               }
+
+               .result img{
+                    height: 20px;
+                    width: 20px;
+                    margin-right: 10px;
+               }
+               #pauseBtn, #resumeBtn {
+                    cursor: pointer;
+                    padding: 10px;
+                    border: 1px solid #ccc;
+                    border-radius: 2px;
+                    margin: 5px;
+               }
+
+               #pauseBtn:hover, #resumeBtn:hover {
+                    background-color: #ccc;
+               }
+               #scoreModal {
+                    color: brown;
+                    font-weight: bolder;
+               }
+
+               #rottenplant, #freshplant {
+                    display: none;
+               }
+
+               #earthworm {
+                    height: 100px;
+                    width: 100px;
+                    margin-bottom: 20px;
+               }
+
+               
+
+               
+          </style>
+
+    </head>
+    <body>
+
+        <!-- Navigation section -->
+            <div class="navigation">
+                 <a href= "index.html"> <img src="../imgs/gamelogo.png" alt="Rules" style="float:left;width:25px;">
+                    Farmer's Earthworm</a>
+                 <a class="selected" href="play!.html">Play!</a>
+                 <a href="leaderboard.html">Leaderboard</a>
+                 <a href="gamerules.html">Game Rules</a>
+                 <a href="signUp.html" class="split">SignUp</a>
+                 <a href="login.html"  class="split">Login</a>
+            </div>
+
+           <h1 style="width: 800px;"> Welcome to Farmer's Earthworm !</h1>
+           <div class="gamePage d-flex flex-column justify-content-center align-items-center">
+               <h3> Farmer's Earthworm</h3>
+               <h2> EASY LEVEL </h2>
+               <p style="margin-right: 80px;"> The player must make the earthworm eat the rotten plant <img style="height: 20px; width: 20px;" src="../imgs/rottenplant.png"> in order to gain points and must avoid eating the fresh plant <img style="height: 20px; width: 20px;"  src="../imgs/freshplant.png"> as the game will end! </p>
+               <p style="margin-right: 80px;"> <img style="height: 20px; width: 20px;" src="../imgs/rules.png"> Alert!  As the player reaches 10 points the speed of our friendly earthworm is gonna increase. </p>
+              <a  class="btn mt-2 mb-4" href="../pages/mediumlevel.html"> Medium Level </a>
+              <div id="startBtn" class="btn mt-2 mb-4">let's start game!</div>
+               <div class="rel">
+                   <div class="d-flex buttons">
+                       <div id="pauseBtn">
+                           <img  src="../imgs/pause.png"></img>
+                       </div>
+                       <div id="resumeBtn">
+                           <img src="../imgs/play.png"></img>
+                       </div>
+                   </div>
+                   <h4 class="mt-3"><span class="result"><img src="../imgs/rottenplant.png" alt="rottenplant"></span><span id="score">0</span></h4>
+               </div>
+               <canvas id="earthwormCanvas" width="900" height="500"></canvas>
+               <img height="80" width="50" id="freshplant" src="../imgs/freshplant.png" alt="freshplant">
+               <img style="height: 80; width: 80;"  id="rottenplant" src="../imgs/rottenplant.png" alt="rottenplant">
+               <audio autoplay loop id="backgroundMusic"  src="../sounds/game.mp3" alt="BackgroundMusic"></audio>
+               <audio id="eatMusic" src="../sounds/eat.mp3" alt="EatMusic"></audio>
+               <audio id="dieMusic" src="../sounds/die.mp3" alt="DieMusic"></audio>
+               <div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                   <div class="modal-dialog modal-dialog-centered" role="document">
+                       <div class="modal-content">
+                           <div class="modal-body">
+                               <img id="earthworm" src="../imgs/gamelogo.png" alt="earthworm">     
+                               <p>Game Over! Your Score is: <span id="scoreModal"></span></p>
+                           </div>
+                           <div class="modal-footer">
+                               <button type="button" class="btn modal-btn" data-dismiss="modal">Ok</button>
+                               <!-- <input type="text" name="username" id="username" placeholder="username"> -->
+                               <!-- <button style="width: 80px;" type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)"> Save </button> -->
+                           </div>
+                       </div>
+                   </div>
+               </div>  
+           </div>
+           <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+           <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+           <script type="text/javascript" src="../js/earthworm.js"></script>
+           
+       
+           
+
+              
+             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+             <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+             
+            
+        <!--Footer-->
+            <div class="footer">
+                 <hr style="height:2px; width: 1220px; border-width:0;color:#93c572;background-color:#93c572">
+                 <p>© 2022 Farmer's Earthworm, Inc. All rights reserved.
+                 <a  href="termsandprivacy.html">Terms and privacy</a> </p>
+                 <img src="../imgs/facebook.png" alt="Facebook" style=" margin-right: 60px;  float: right; width:30px;">
+                 <img src="../imgs/instagram.png" alt="Instagram" style=" float: right; width:30px;">
+                 <img src="../imgs/twitter.png" alt="Twitter" style=" float: right; width:30px;">
+                 <img src="../imgs/snapchat.png" alt="Snapchat" style=" float: right; width:30px;">
+                 <p>earthwormfarmers@gmail.com</p>
+                 <p> <img src= "../imgs/donutlogo.png" style=" float: left; width:30px ;">Donut Games | Farmer's Earthworm | Dubai Internet City | Dubai Knowledge Park | Middlesex University Dubai |
+                 United Arab Emirates |</p>  
+
+                 
+            </div>
+        <br><br>
+
+    </body>
+</html>

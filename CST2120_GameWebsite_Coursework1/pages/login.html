@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Log in</title>
+            <!--Link to external style sheet-->
+                    <link rel="stylesheet" type="text/css" href="../css/styles2.css">
+
+            <!--Link to Favicon-->
+                    <link href="../imgs/gamelogo.png"  type="imgs/png" rel="icon">
+    
+
+    </head>
+    <body>
+            <!--Navigation section-->
+                    <div class="navigation">
+                        <a href= "index.html"><img src="../imgs/gamelogo.png" alt="Rules" style="float:left;width:25px;">
+                            Farmer's Earthworm</a>
+                        <a href="play!.html">Play!</a>
+                        <a href="leaderboard.html">Leaderboard</a>
+                        <a href="gamerules.html">Game Rules</a>
+                        <a href="signUp.html" class="split">SignUp</a>
+                        <a href="login.html" class="split">Login</a>
+                    </div>
+                    <h1 style="font-size: 45px;"> Welcome to Farmer's Earthworm !</h1>
+
+            <!--Login Form-->
+                <form  id="loginPara" onsubmit="return false">
+                    <div  class="container" >
+
+                            <h1 style="text-align: center; margin-left: 15px;  width: 750px;">User Login!</h1>
+                        <hr>
+              
+                             <label for="email"><b>Email</b></label>
+                             <input type="email" placeholder="Enter Email" name="email" id="email" required>
+              
+                            <label for="psw"><b>Password</b></label>
+                            <input type="password" placeholder="Enter Password" name="psw" id="password" required>
+                            <p id="loginFailure" style="color:red;"></p>
+              
+                        <hr>
+                            <button type="submit" onclick="login()" class="registerbtn">Login</button>
+
+                    </div>
+                    <div class="container signin">
+                            <p>New to Farmer's Earthworm? <a href="signUp.html">Sign up now!</a></p>
+                    </div>
+                </form>
+                    
+
+            <!--Defining the login Functions-->
+
+                <script>
+
+                    // Check to see if the user has already logged in.
+                    window.onload = checkLogin;
+
+                    function checkLogin(){
+                        if(sessionStorage.loggedInUsrEmail !== undefined){
+                            // Extract the user's details who is logged in
+                             let usrObj = JSON.parse(localStorage[sessionStorage.loggedInUsrEmail]);
+
+                            // Hello, logged-in user.
+                             document.getElementById("loginPara").innerHTML = usrObj.email + " logged in.";
+                        }
+                    }
+
+                    let cookies = document.cookie;
+
+                    function login(){
+                            // Get email address
+                             let email = document.getElementById("email").value;
+
+                            // User doesn't have a login
+                             if(localStorage[email] === undefined){
+                                // Inform the user that they do not have an account 
+                                    document.getElementById("loginFailure").innerHTML = "Email not recognized. Do you have an account?";
+                                    return; // User is logged in
+                            }
+                            else{ 
+                                //User has an account
+                                    let usrObj = JSON.parse(localStorage[email]);// Convert to object
+                                    let password = document.getElementById("password").value;
+                            if(password === usrObj.password){ // Sucessful login
+                                    document.getElementById("loginPara").innerHTML = usrObj.email + " Logged in.";
+                                    document.getElementById("loginFailure").innerHTML = ""; // Clear any login failures
+                                    sessionStorage.loggedInUsrEmail = usrObj.email;
+                            }
+                            else{
+                                    document.getElementById("loginFailure").innerHTML = "Password Incorrect. Please try again.";
+                            }
+
+                        }
+                    }
+                </script>
+
+                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+        
+            <!--Footer-->
+                    <div class="footer">
+                         <hr style="height:2px; width: 1220px; border-width:0;color:#93c572;background-color:#93c572">
+                         <p>© 2022 Farmer's Earthworm, Inc. All rights reserved.
+                         <a  href="termsandprivacy.html">Terms and privacy</a> </p>
+                                 <img src="../imgs/facebook.png" alt="Facebook" style=" margin-right: 60px;  float: right; width:30px;">
+                                 <img src="../imgs/instagram.png" alt="Instagram" style=" float: right; width:30px;">
+                                 <img src="../imgs/twitter.png" alt="Twitter" style=" float: right; width:30px;">
+                                 <img src="../imgs/snapchat.png" alt="Snapchat" style=" float: right; width:30px;">
+                        <p>earthwormfarmers@gmail.com</p>
+                        <p> <img src= "../imgs/donutlogo.png" style=" float: left; width:30px ;">Donut Games | Farmer's Earthworm | Dubai Internet City | Dubai Knowledge Park | Middlesex University Dubai |
+                        United Arab Emirates |</p>  
+                    </div>
+
+    </body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leaderboard</title>
+            <!-- Link to external styles sheet -->
+                 <link href="../css/styles.css" type="text/css" rel="stylesheet">
+
+            <!--Link to Favicon-->
+                 <link href="../imgs/gamelogo.png"  type="imgs/png" rel="icon">
+                 <style>
+                 
+                  /*Style sheet for leaderboard table*/
+                  table {
+                    
+                    border-collapse: collapse;
+                    background-color: #dddddd;
+                    width: 100%;
+                  }
+                  
+                  td, th {
+                    border: 1px solid #50c878;
+                    text-align: left;
+                    padding: 8px;
+                  }
+                  
+                  tr:nth-child(even) {
+                    background-color: #dddddd;
+                  } 
+                  </style>
+    
+    </head>
+    <body>
+            <!-- Navigation section -->
+                <div class="navigation">
+                     <a href= "index.html"><img src="../imgs/gamelogo.png" alt="Rules" style="float:left;width:25px;">
+                      Farmer's Earthworm</a>
+                     <a href="play!.html">Play!</a>
+                     <a class="selected" href="leaderboard.html">Leaderboard</a>
+                     <a href="gamerules.html">Game Rules</a>
+                     <a href="signUp.html" class="split">SignUp</a>
+                     <a href="login.html" class="split">Login</a>
+                </div>
+
+                  <h1> <img src="../imgs/trophy.png" alt="trophy" style="margin-left: 50px; float:left;width:60px;">
+                  LEADERBOARD </h1>
+                
+                  <h2>Top Players</h2>
+                
+
+                  <h1 style=" font-size: 38px; height: 60px; margin-left: 10px; width: 260px;"> <img style="width: 45px; height: 45px;" src="../imgs/diamond.png" > Easy Level  </h1>
+                  <!-- Creating an unordered list to display the score in highest to lowest order-->
+                    <ul class="text-center" id="highscore"></ul>
+
+                <script>
+                    const highscore = document.getElementById("highscore");
+
+                    function createListItem(content){
+                        const li = document.createElement("li");
+                        li.textContent = content;
+
+                        return li;
+                    }
+
+                  // Obtain the highscores from local storage. If it is empty, set it to empty array.
+                    let scores = JSON.parse(localStorage.getItem("highscore"));
+
+                    scores = scores.sort().reverse();
+
+                    for (let index = 0; index < scores.length; index++) {
+                        const li =createListItem(
+                        String(index +1) + ") " + scores[index]
+                    );
+
+                    highscore.appendChild(li);
+                  }
+                </script>                  
+                <script type="text/javascript" src="../js/earthworm.js"></script>
+
+                  
+             
+                <h1 style=" font-size: 38px; height: 60px; margin-left: 10px; width: 260px;">  Medium Level</h1>
+
+                    <table style="margin-left: 60px;width:80%">
+                      <tr>\
+                          <th></th>
+                          <th>Rank</th>
+                          <th>Player Name</th>
+                          <th>Country</th>
+                          <th>Team</th>
+                          <th>Points</th>
+                      </tr>
+                      <tr>
+                          <td><img src="../imgs/goldbar.png" style="width: 30px;"> </td>
+                          <td>1</td>
+                          <td>Justin Trudeau</td>
+                          <td>Canada</td>
+                          <td>Gold </td>
+                          <td>98</td>
+                      </tr>
+                      <tr>
+                          <td><img src="../imgs/goldbar.png" style="width: 30px;"> </td>
+                          <td>2</td>
+                          <td>Saud Abdul Rahmani</td>
+                          <td>United Arab Emirates</td>
+                          <td>Gold </td>
+                          <td>85</td>
+                      </tr>
+                      <tr>
+                        <td><img src="../imgs/goldbar.png" style="width: 30px;"> </td>
+                        <td>3</td>
+                        <td>Saeed Saleh Hattab</td>
+                        <td>Saudi Arabia</td>
+                        <td>Gold </td>
+                        <td>78</td>
+                      </tr>
+                      <tr>
+                        <td><img src="../imgs/goldbar.png" style="width: 30px;"> </td>
+                        <td>4</td>
+                        <td>Charlotte Georage</td>
+                        <td>United Kingdom</td>
+                        <td>Gold </td>
+                        <td>68</td>
+                      </tr>
+                    </table> 
+ 
+        
+                  <br><br><br><br><br><br><br><br>
+                  
+
+            <!--Footer-->
+               
+                  <div class="footer">
+                       <hr style="height:2px; width: 1220px; border-width:0;color:#93c572;background-color:#93c572">
+                       <p>© 2022 Farmer's Earthworm, Inc. All rights reserved.
+                       <a  href="termsandprivacy.html">Terms and privacy</a> </p>
+                           <img src="../imgs/facebook.png" alt="Facebook" style=" margin-right: 60px;  float: right; width:30px;">
+                           <img src="../imgs/instagram.png" alt="Instagram" style=" float: right; width:30px;">
+                           <img src="../imgs/twitter.png" alt="Twitter" style=" float: right; width:30px;">
+                           <img src="../imgs/snapchat.png" alt="Snapchat" style=" float: right; width:30px;">
+                       <p>earthwormfarmers@gmail.com</p>
+                       <p> <img src= "../imgs/donutlogo.png" style=" float: left; width:30px ;">Donut Games | Farmer's Earthworm | Dubai Internet City | Dubai Knowledge Park | Middlesex University Dubai |
+                       United Arab Emirates |</p>  
+                  </div>
+    </body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Farmer's Earthworm</title>
+
+          <!-- Link to external style sheet -->
+            <link rel="stylesheet" type="text/css" href="../css/styles.css">
+       
+          <!--Link to Favicon-->
+             <link rel="icon" type="imgs/png" href="../imgs/gamelogo.png">
+
+        <style>
+
+          /* Style sheet for Testimonials */
+          .container 
+                 {
+                    border: 4px solid #fcc200;
+                    background-color: #4F7942;
+                    border-radius: 5px;
+                    padding: 10px;
+                    margin: 10px 0;
+                    width: 800px;     
+                }
+              .container::after 
+                 {
+                    content: "";
+                    clear: both;
+                    display: table;
+                }
+
+              .container img 
+                {
+                    float: left;
+                    margin-right: 20px;
+                    border-radius: 50%;
+                }
+
+              .container span 
+                {
+                    font-size: 25px;
+                    margin-right: 15px;
+                }
+
+              @media (max-width: 400px) 
+                {
+              .container 
+                {
+                    text-align: center;
+                    float: right;
+                }
+              .container img 
+                {
+                    margin: auto;
+                    float: none;
+                    display: block;
+                }
+                }
+       </style>
+ 
+    </head>
+    <body>
+
+          <!-- Navigation section -->
+            <div class="navigation">
+                 <a class="selected" href="index.html" ><img src="../imgs/gamelogo.png" alt="Rules" style="float:left;width:25px;">
+                 Farmer's Earthworm</a>
+                 <a href="play!.html">Play!</a>
+                 <a href="leaderboard.html">Leaderboard</a>
+                 <a href="gamerules.html">Game Rules</a>
+                 <a href="signUp.html" class="split">SignUp</a>
+                 <a href="login.html" class="split">Login</a>
+            </div>
+
+          <!-- Contents of the page -->
+            <h1>All About the Game! </h1>
+
+          <!-- Farmer's Earthworm Introduction-->
+            <img src="../imgs/Farmer's Earthworm .png " alt="Farmer's Earthworm" style="margin-left: 10px; float:left;width:300px;height:200px;">
+               
+            <!-- Intrduction container-->
+              <div style="float: right; margin-right: 80px; height: 185px;" class="container">
+                 <p><br>The user will utilize a helpful earthworm to collect the dead plants on a verdant paddy field that serves 
+                 as the game's backdrop. Selecting a slow, medium, or fast speed will enable the player to increase the 
+                 difficulty level.<br><br>
+                 The gamer must refrain from gathering fresh plants because doing so lowers their score.
+                 As more decaying plants are collected, the user's score increases.</p>
+              </div>
+              <br><br><br>
+
+          <!-- Fun Facts Pictures Slideshow-->
+          <div  style="margin-top: 200px; margin-left: 150px;  " class="slideshow-container">
+              <!--Image 1-->
+              <div class="mySlides fade">
+                <div class="numbertext">1 / 3</div>
+                <img src="../imgs/fact1.png" style="height: 500px; width:1000px;">
+              </div>
+
+              <!--Image 2-->
+              <div class="mySlides fade">
+                <div class="numbertext">2 / 3</div>
+                <img src="../imgs/fact2.png" style="height: 500px; width:1000px;">
+              </div>
+          
+              <!--Image 3-->
+              <div class="mySlides fade">
+                <div class="numbertext">3 / 3</div>
+                <img src="../imgs/fact3.png" style="height: 500px; width:1000px;">
+              </div>
+          </div>
+          <br>
+
+              <div style="text-align:center">
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+              </div>
+          
+            <script>
+                 let slideIndex = 0;
+                 showSlides();
+          
+              function showSlides() {
+                    let i;
+                    let slides = document.getElementsByClassName("mySlides");
+                    let dots = document.getElementsByClassName("dot");
+                       for (i = 0; i < slides.length; i++) {
+                       slides[i].style.display = "none";  
+                    }
+                       slideIndex++;
+                       if (slideIndex > slides.length) {slideIndex = 1}    
+                       for (i = 0; i < dots.length; i++) {
+                         dots[i].className = dots[i].className.replace(" active", "");
+                    }
+                         slides[slideIndex-1].style.display = "block";  
+                         dots[slideIndex-1].className += " active";
+                         setTimeout(showSlides, 2000); // Change image every 2 seconds
+                     }
+            </script>
+        
+      
+          <!-- Testimonials-->
+                  <h1> Testimonials </h1>
+               <!--User 1-->
+                  <div class="container"  style="margin-left: 150px; background-color: #fcc200; border: 4px solid #4F7942">
+                         <img src="../imgs/avatar 1.png" alt="Avatar1" style="width:90px">
+                         <p><span>Mr.Bean</span>[Expert Player]</p>
+                         <p> I always play the farmer's Earthworm game. My excitement is pure!<br>
+                         Looking forward to more upgrades and variants of the farmer's earthworm</p>
+                  </div>
+               <!--User 2-->
+                  <div class="container" style="margin-left: 300px;">
+                         <img src="../imgs/avatar 2.png " alt="Avatar2" style="width:90px">
+                         <p><span>Lilibet Middleton</span>[Intermediate Player]</p>
+                         <p>The user interface of the game Farmer's Earthworm is fantastic.<br> 
+                         The graphics in the game are stunning. </p>
+                  </div>
+              <!--User 3-->
+                  <div class="container" class="container"  style="margin-left: 150px; background-color: #fcc200; border: 4px solid #4F7942">
+                         <img src="../imgs/avatar 3.png " alt="Avatar3" style="width:90px">
+                         <p><span>Harry Duches</span>[Intermediate Player]</p>
+                         <p>The game Farmer's Earthworm is incredibly insightful.<br>
+                         Where young people can pick up some positive principles. </p>
+                  </div>
+              <!--User 4-->
+                 <div class="container" style="margin-left: 300px;">
+                         <img src="../imgs/avatar 4.png " alt="Avatar4" style="width:90px">
+                         <p><span>Dua lipa</span>[Expert Player]</p>
+                         <p>I simply adore the game; it has the nicest visuals and design. </p>
+                 </div>
+                        <br><br><br><br><br><br><br><br><br>
+                        
+                        
+          <!--Footer-->
+                 <div class="footer">
+                    <hr style="height:2px; width: 1220px; border-width:0;color:#93c572;background-color:#93c572">
+                        <p>© 2022 Farmer's Earthworm, Inc. All rights reserved.
+                           <a  href="termsandprivacy.html">Terms and privacy</a> </p>
+                           <img src="../imgs/facebook.png" alt="Facebook" style=" margin-right: 60px;  float: right; width:30px;">
+                           <img src="../imgs/instagram.png" alt="Instagram" style=" float: right; width:30px;">
+                           <img src="../imgs/twitter.png" alt="Twitter" style=" float: right; width:30px;">
+                           <img src="../imgs/snapchat.png" alt="Snapchat" style=" float: right; width:30px;">
+                        <p>earthwormfarmers@gmail.com</p>
+                        <p> <img src= "../imgs/donutlogo.png" style=" float: left; width:30px ;">Donut Games | Farmer's Earthworm | Dubai Internet City | Dubai Knowledge Park | Middlesex University Dubai |
+                          United Arab Emirates |</p>  
+               </div>
+      
+      
+
+    </body>
+</html>
